@@ -1,7 +1,0 @@
-ollama
-SpeechRecognition
-sounddevice
-soundfile
-numpy
-pyttsx3
-scikit-learn
