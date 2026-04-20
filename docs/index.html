@@ -186,6 +186,77 @@
       </div>
     </section>
 
+    <section class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Device States</p>
+        <h2>OLED Display Screens</h2>
+        <p class="muted">Real firmware visualization showing what appears on the 128×64 monochrome display.</p>
+      </div>
+
+      <div class="oled-showcase">
+        <article class="oled-sim">
+          <p class="oled-title">Warming Up</p>
+          <div class="oled-screen" id="oled-warmup">
+            <div style="padding:4px;">
+              <p style="margin:0;font-size:8px;border-bottom:1px solid #fff;padding-bottom:2px;">INDUSTRIAL DOCTOR v2</p>
+              <p style="margin:2px 0;font-size:7px;">WARMING UP<span id="dots-warmup">...</span></p>
+              <p style="margin:2px 0;font-size:6px;">Detecting motor mode</p>
+              <canvas id="heartbeat" width="120" height="16" style="display:block;margin:4px 0;"></canvas>
+              <p style="margin:2px 0;font-size:6px;">Hold motor steady...</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="oled-sim">
+          <p class="oled-title">Calibrating</p>
+          <div class="oled-screen" id="oled-calibrate">
+            <div style="padding:4px;">
+              <p style="margin:0;font-size:8px;border-bottom:1px solid #fff;padding-bottom:2px;display:flex;justify-content:space-between;">
+                <span>INDUSTRIAL DOCTOR v2</span>
+                <span id="voltage-mode">[ 8V ]</span>
+              </p>
+              <p style="margin:2px 0;font-size:7px;">CALIBRATING<span id="dots-calib">...</span></p>
+              <div style="margin:3px 0;border:1px solid #fff;height:6px;position:relative;">
+                <div id="progress-bar" style="height:100%;width:45%;background:#fff;"></div>
+              </div>
+              <p style="margin:2px 0;font-size:6px;" id="progress-text">45%  Building baseline</p>
+              <p style="margin:2px 0;font-size:6px;">Keep motor running...</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="oled-sim">
+          <p class="oled-title">Rolling Baseline</p>
+          <div class="oled-screen" id="oled-rolling">
+            <div style="padding:4px;">
+              <p style="margin:0;font-size:8px;border-bottom:1px solid #fff;padding-bottom:2px;display:flex;justify-content:space-between;">
+                <span>INDUSTRIAL DOCTOR v2</span>
+                <span>[ 8V ]</span>
+              </p>
+              <p style="margin:2px 0;font-size:7px;">ROLLING BASELINE<span id="dots-rolling">...</span></p>
+              <canvas id="sine-wave" width="120" height="18" style="display:block;margin:4px 0;"></canvas>
+              <p style="margin:2px 0;font-size:6px;">Adapting to env...</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="oled-sim">
+          <p class="oled-title">Feature Readout</p>
+          <div class="oled-screen" id="oled-features">
+            <div style="padding:4px;font-size:6px;">
+              <p style="margin:0;font-size:8px;border-bottom:1px solid #fff;padding-bottom:2px;">
+                Features  <span id="page-num">1</span>/4
+              </p>
+              <p style="margin:3px 0;">RMS</p>
+              <p style="margin:0;font-size:10px;font-weight:bold;" id="rms-val">245.8</p>
+              <p style="margin:3px 0;">PEAK Hz</p>
+              <p style="margin:0;font-size:10px;font-weight:bold;" id="hz-val">1247</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="scope" class="container section reveal">
       <div class="section-head">
         <p class="eyebrow">Scope</p>
