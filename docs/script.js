@@ -146,9 +146,93 @@ function initSmoothAnchors() {
   });
 }
 
+function initOledSimulations() {
+  // Heartbeat animation
+  const hbCanvas = document.getElementById("heartbeat");
+  if (hbCanvas) {
+    const ctx = hbCanvas.getContext("2d");
+    const heartbeat = [0, 0, 0, 0, -2, -4, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let phase = 0;
+    setInterval(() => {
+      ctx.clearRect(0, 0, hbCanvas.width, hbCanvas.height);
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let i = 0; i < 120; i++) {
+        const idx = (i / 4 + phase) % 16;
+        const y = 8 + heartbeat[Math.floor(idx)] * 0.8;
+        i === 0 ? ctx.moveTo(i, y) : ctx.lineTo(i, y);
+      }
+      ctx.stroke();
+      phase = (phase + 1) % 16;
+    }, 50);
+  }
+
+  // Sine wave animation
+  const sineCanvas = document.getElementById("sine-wave");
+  if (sineCanvas) {
+    const ctx = sineCanvas.getContext("2d");
+    let offset = 0;
+    setInterval(() => {
+      ctx.clearRect(0, 0, sineCanvas.width, sineCanvas.height);
+      ctx.strokeStyle = "#fff";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = 0; x < 120; x++) {
+        const angle1 = (x + offset) * 0.12;
+        const angle2 = (x + offset) * 0.07 + 1.2;
+        const y1 = 9 + Math.sin(angle1) * 4;
+        const y2 = 9 + Math.sin(angle2) * 2;
+        const y = (y1 + y2) / 2;
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      offset = (offset + 0.5) % 120;
+    }, 50);
+  }
+
+  // Calibration progress
+  let progress = 0;
+  setInterval(() => {
+    const bar = document.getElementById("progress-bar");
+    const text = document.getElementById("progress-text");
+    if (bar && text) {
+      progress = (progress + 1) % 100;
+      bar.style.width = progress + "%";
+      text.textContent = progress + "%  Building baseline";
+    }
+  }, 80);
+
+  // Animate dots
+  const dots = ["", ".", "..", "...", "..", "."];
+  let dotIdx = 0;
+  setInterval(() => {
+    document.getElementById("dots-warmup").textContent = dots[dotIdx % dots.length];
+    document.getElementById("dots-calib").textContent = dots[dotIdx % dots.length];
+    document.getElementById("dots-rolling").textContent = dots[dotIdx % dots.length];
+    dotIdx += 1;
+  }, 350);
+
+  // Feature page rotation
+  const features = [
+    { label: "RMS", val: "245.8", label2: "PEAK Hz", val2: "1247" },
+    { label: "KURT", val: "3.24", label2: "CREST", val2: "4.82" },
+    { label: "CENTROID", val: "847", label2: "ZCR", val2: "0.168" },
+  ];
+  let featureIdx = 0;
+  setInterval(() => {
+    const feat = features[featureIdx % features.length];
+    document.getElementById("page-num").textContent = (featureIdx % features.length) + 1;
+    document.getElementById("rms-val").textContent = feat.val;
+    document.getElementById("hz-val").textContent = feat.val2;
+    featureIdx += 1;
+  }, 2000);
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   initHeroStatusAnimation();
   initRevealAnimations();
   initCharts();
   initSmoothAnchors();
+  initOledSimulations();
 });
