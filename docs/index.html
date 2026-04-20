@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Industrial Doctor v2.0 - non-technical showcase for predictive maintenance outcomes.">
+  <title>Industrial Doctor v2.0 | Predictive Maintenance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,500;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">iD</span>
+      <div>
+        <p class="brand-name">Industrial Doctor</p>
+        <p class="brand-sub">v2.0</p>
+      </div>
+    </div>
+
+    <nav aria-label="Primary">
+      <ul class="nav-list">
+        <li><a href="#purpose">Purpose</a></li>
+        <li><a href="#states">States</a></li>
+        <li><a href="#scope">Scope</a></li>
+        <li><a href="#hardware">Hardware</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container reveal">
+      <div class="hero-copy">
+        <p class="eyebrow">Always-On Machine Health Companion</p>
+        <h1>Industrial Doctor <span>v2.0</span></h1>
+        <p class="hero-tagline">From machine pulse to digital diagnosis.</p>
+        <p class="hero-text">
+          A people-first monitoring system that helps teams spot machine condition changes early,
+          reduce unplanned downtime, and plan maintenance with confidence.
+        </p>
+
+        <div class="hero-chips">
+          <span>Real-Time Monitoring</span>
+          <span>Non-Technical Readout</span>
+          <span>Edge Deployment</span>
+        </div>
+      </div>
+
+      <div class="hero-panel" role="img" aria-label="Illustrative machine health dashboard">
+        <p class="panel-kicker">Live Status</p>
+        <h2 id="hero-state">HEALTHY</h2>
+        <p id="hero-note">Machine behavior is stable and within expected operation.</p>
+
+        <div class="meter-wrap">
+          <div class="meter">
+            <div class="meter-fill" id="meter-fill"></div>
+          </div>
+          <p class="meter-label"><span id="meter-value">87%</span> confidence</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="purpose" class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Purpose</p>
+        <h2>Why this project exists</h2>
+      </div>
+
+      <div class="card-grid four">
+        <article class="info-card">
+          <h3>Prevent Surprises</h3>
+          <p>Catch warning signals sooner so maintenance can be planned, not rushed.</p>
+        </article>
+        <article class="info-card">
+          <h3>Support Operators</h3>
+          <p>Turn complex machine behavior into straightforward status language.</p>
+        </article>
+        <article class="info-card">
+          <h3>Reduce Downtime</h3>
+          <p>Improve response time when equipment behavior begins to drift.</p>
+        </article>
+        <article class="info-card">
+          <h3>Build Confidence</h3>
+          <p>Give teams a clear visual health signal directly on-device.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">At a glance</p>
+        <h2>Simple journey from machine to decision</h2>
+      </div>
+
+      <div class="journey">
+        <div class="step">
+          <span>01</span>
+          <h3>Listen</h3>
+          <p>Device continuously monitors machine acoustic behavior.</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <span>02</span>
+          <h3>Interpret</h3>
+          <p>On-device intelligence evaluates condition trends in real time.</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <span>03</span>
+          <h3>Display</h3>
+          <p>OLED presents clear status: Ambient, Healthy, or Fault.</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="step">
+          <span>04</span>
+          <h3>Act</h3>
+          <p>Teams make practical maintenance decisions faster.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="states" class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">System states</p>
+        <h2>Three clear outcomes</h2>
+      </div>
+
+      <div class="card-grid three">
+        <article class="state-card ambient">
+          <h3>Ambient</h3>
+          <p>No meaningful machine activity detected. Monitoring remains active.</p>
+          <span class="state-pill">Standby</span>
+        </article>
+
+        <article class="state-card healthy">
+          <h3>Healthy</h3>
+          <p>Machine behavior appears stable and within normal operating profile.</p>
+          <span class="state-pill">Normal</span>
+        </article>
+
+        <article class="state-card fault">
+          <h3>Fault</h3>
+          <p>Noticeable condition deviation detected. Maintenance attention recommended.</p>
+          <span class="state-pill">Attention</span>
+        </article>
+      </div>
+
+      <div class="photo-grid">
+        <figure class="photo-card">
+          <img src="assets/ambient.jpg" alt="Ambient state display photo placeholder">
+          <figcaption>Ambient state view (replace with your real OLED photo)</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="assets/healthy.jpg" alt="Healthy state display photo placeholder">
+          <figcaption>Healthy state view (replace with your real OLED photo)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Visual dashboard</p>
+        <h2>Project impact snapshot</h2>
+        <p class="muted">Charts below are high-level presentation visuals only and do not expose internal logic.</p>
+      </div>
+
+      <div class="charts-grid">
+        <article class="chart-card">
+          <h3>Status distribution (example view)</h3>
+          <canvas id="statusChart" aria-label="Status distribution chart"></canvas>
+        </article>
+
+        <article class="chart-card">
+          <h3>Operational confidence trend (example)</h3>
+          <canvas id="trendChart" aria-label="Confidence trend chart"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section id="scope" class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Scope</p>
+        <h2>What this showcase includes</h2>
+      </div>
+
+      <div class="scope-layout">
+        <article>
+          <h3>Included</h3>
+          <ul>
+            <li>Project purpose and real-world value.</li>
+            <li>Simple operating states for non-technical audiences.</li>
+            <li>Hardware role overview and practical context.</li>
+            <li>Visual storytelling for portfolio/demo use.</li>
+          </ul>
+        </article>
+
+        <article>
+          <h3>Not disclosed</h3>
+          <ul>
+            <li>Internal formulas and decision thresholds.</li>
+            <li>Calibration constants and tuning values.</li>
+            <li>Implementation-specific heuristics.</li>
+            <li>Any proprietary methods or secret sauce.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="hardware" class="container section reveal">
+      <div class="section-head">
+        <p class="eyebrow">Hardware</p>
+        <h2>Physical platform</h2>
+      </div>
+
+      <div class="card-grid three">
+        <article class="info-card hardware">
+          <h3>ESP32 Controller</h3>
+          <p>Runs the on-device monitoring experience and display workflow.</p>
+        </article>
+        <article class="info-card hardware">
+          <h3>Digital MEMS Mic</h3>
+          <p>Captures machine sound signatures for continuous observation.</p>
+        </article>
+        <article class="info-card hardware">
+          <h3>SSD1306 OLED</h3>
+          <p>Presents live machine condition directly at the edge.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <p class="footer-title">Industrial Doctor v2.0</p>
+    <p class="footer-note">Public-facing demo page. Proprietary core logic is intentionally not shown.</p>
+  </footer>
+</body>
+</html>
