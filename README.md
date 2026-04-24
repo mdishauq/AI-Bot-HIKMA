@@ -1,6 +1,5 @@
 # Industrial Doctor v2.0
 ## Smart Health Companion for Rotating Machines
-
 > From machine pulse to digital diagnosis.
 
 <p align="center">
@@ -59,29 +58,79 @@ journey
 
 ## System Status Screens
 
-### Ambient State
+The device transitions between three clearly defined states. Each state has a distinct signal signature and a matching on-device display.
 
-Use this block for your OLED photo when the machine is in Ambient state.
+---
+
+### 🔵 Ambient State
+
+The machine is powered off or no meaningful mechanical activity is detected. The system remains active and listening, but no significant vibration or acoustic signature is present.
+
+**What the signal looks like:**
+
+![Ambient Signal Chart](chart_ambient.png)
+
+> In Ambient, the PeakHz line (orange) is extremely volatile — swinging wildly across the full 0–2000 range with no stable pattern. This is background environmental noise with no mechanical source. The RMS and Centroid values (blue) also shift unpredictably. There is no rhythm, no consistency. The system recognises this disorder as the absence of machine activity.
+
+**OLED Display — Ambient State:**
 
 ```text
 [ Insert Ambient OLED Photo Here ]
 ```
 
-Suggested caption:
+> Ambient mode: no meaningful machine activity detected, monitoring remains active.
 
-Ambient mode: no meaningful machine activity detected, monitoring remains active.
+---
 
-### Healthy State
+### ✅ Healthy State
 
-Use this block for your OLED photo when the machine is in Healthy state.
+The machine is running normally. Signal features are stable and within expected bounds. No intervention is needed.
+
+**What the signal looks like:**
+
+![Healthy Signal Chart](chart_healthy.png)
+
+> In Healthy mode, the PeakHz line (orange) sits in a tight, stable band around 650–700 Hz for most of the session. The RMS and Centroid (blue) move gradually and smoothly, without sudden jumps. Toward the later segment, some natural variation appears as load shifts — but this stays within the expected envelope. The overall picture is calm, consistent, and predictable.
+
+**OLED Display — Healthy State:**
 
 ```text
 [ Insert Healthy OLED Photo Here ]
 ```
 
-Suggested caption:
+> Healthy mode: machine behavior is stable and operating as expected.
 
-Healthy mode: machine behavior is stable and operating as expected.
+---
+
+### ⚠️ Fault State
+
+An anomaly has been detected. The signal shows characteristics that deviate from the healthy baseline. The system flags this early so action can be planned rather than forced.
+
+**What the signal looks like:**
+
+![Fault Signal Chart](chart_fault.png)
+
+> In Fault mode, the PeakHz line (orange) is mostly stable — but interrupted by sharp, isolated spikes that shoot to 1700–2000 Hz before returning to baseline. These sudden impulse events are the key fault indicator. Unlike Ambient noise (which is continuously chaotic), these spikes are brief, repeating, and structurally distinct. The RMS and Centroid (blue) may dip slightly around fault events. The pattern points to friction, impact, or a developing mechanical irregularity.
+
+**OLED Display — Fault State:**
+
+```text
+[ Insert Fault OLED Photo Here ]
+```
+
+> Fault mode: anomaly detected — early warning issued, plan maintenance action.
+
+---
+
+## State Comparison Summary
+
+| Feature | Ambient | Healthy | Fault |
+| :-- | :-- | :-- | :-- |
+| PeakHz Behaviour | Chaotic, full range | Stable, narrow band | Stable with sharp impulse spikes |
+| RMS / Centroid | Unpredictable | Smooth and gradual | Slightly unstable around spikes |
+| ZCR | Variable | Low and quiet | Low with brief bursts |
+| Interpretation | No machine activity | Normal operation | Developing mechanical issue |
+| Recommended Action | None | Continue monitoring | Schedule inspection |
 
 ---
 
