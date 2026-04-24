@@ -1,11 +1,16 @@
+// Enhanced state loop with more realistic transitions
 const stateLoop = [
-  { state: "HEALTHY", color: "#0c8f84", confidence: 87, note: "Machine behavior is stable and within expected operation." },
-  { state: "HEALTHY", color: "#0c8f84", confidence: 91, note: "Condition remains steady with consistent operational response." },
+  { state: "HEALTHY", color: "#2d7a68", confidence: 87, note: "Machine behavior is stable and within expected operation." },
+  { state: "HEALTHY", color: "#2d7a68", confidence: 91, note: "Condition remains steady with consistent operational response." },
   { state: "AMBIENT", color: "#64748b", confidence: 54, note: "No meaningful machine activity. Monitoring remains active." },
-  { state: "HEALTHY", color: "#0c8f84", confidence: 89, note: "Machine has returned to normal profile and stable status." },
-  { state: "FAULT", color: "#d97706", confidence: 78, note: "Noticeable deviation detected. Maintenance check is recommended." },
+  { state: "HEALTHY", color: "#2d7a68", confidence: 89, note: "Machine has returned to normal profile and stable status." },
+  { state: "FAULT", color: "#d97706", confidence: 78, note: "Noticeable deviation detected. Maintenance check recommended soon." },
 ];
 
+/**
+ * Initialize hero status animation
+ * Cycles through different machine states with smooth transitions
+ */
 function initHeroStatusAnimation() {
   const stateEl = document.getElementById("hero-state");
   const noteEl = document.getElementById("hero-note");
@@ -18,18 +23,31 @@ function initHeroStatusAnimation() {
 
   const paint = () => {
     const item = stateLoop[i % stateLoop.length];
-    stateEl.textContent = item.state;
-    stateEl.style.color = item.color;
-    noteEl.textContent = item.note;
-    fillEl.style.width = `${item.confidence}%`;
-    valueEl.textContent = `${item.confidence}%`;
+    
+    // Animate state text with fade
+    stateEl.style.opacity = "0.6";
+    stateEl.style.transition = "opacity 300ms ease";
+    
+    setTimeout(() => {
+      stateEl.textContent = item.state;
+      stateEl.style.color = item.color;
+      noteEl.textContent = item.note;
+      fillEl.style.width = `${item.confidence}%`;
+      valueEl.textContent = `${item.confidence}%`;
+      stateEl.style.opacity = "1";
+    }, 150);
+
     i += 1;
   };
 
   paint();
-  window.setInterval(paint, 2600);
+  window.setInterval(paint, 2800);
 }
 
+/**
+ * Initialize reveal animations using Intersection Observer
+ * Animates elements as they scroll into view
+ */
 function initRevealAnimations() {
   const revealItems = document.querySelectorAll(".reveal");
   if (!revealItems.length) return;
@@ -43,18 +61,25 @@ function initRevealAnimations() {
         }
       });
     },
-    { threshold: 0.12 }
+    { threshold: 0.15 }
   );
 
   revealItems.forEach((el) => obs.observe(el));
 }
 
+/**
+ * Initialize Chart.js visualizations
+ * Creates status distribution doughnut and trend line charts
+ */
 function initCharts() {
   if (typeof Chart === "undefined") return;
 
-  const textColor = "#4d5a74";
-  const gridColor = "rgba(20, 33, 61, 0.09)";
+  const textColor = "#2d5a4f";
+  const gridColor = "rgba(45, 122, 104, 0.08)";
+  const primaryGreen = "#2d7a68";
+  const lightGreen = "#4a9e89";
 
+  // Status Distribution Doughnut Chart
   const statusCanvas = document.getElementById("statusChart");
   if (statusCanvas) {
     new Chart(statusCanvas, {
@@ -64,20 +89,35 @@ function initCharts() {
         datasets: [
           {
             data: [66, 21, 13],
-            backgroundColor: ["#0c8f84", "#64748b", "#d97706"],
+            backgroundColor: ["#2d7a68", "#64748b", "#d97706"],
             borderColor: ["#ffffff", "#ffffff", "#ffffff"],
             borderWidth: 3,
-            hoverOffset: 5,
+            hoverOffset: 8,
+            borderRadius: 6,
           },
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: true,
         plugins: {
           legend: {
             position: "bottom",
-            labels: { color: textColor, font: { family: "Sora", size: 12 } },
+            labels: { 
+              color: textColor, 
+              font: { family: "Sora", size: 12, weight: "600" },
+              padding: 15,
+              boxHeight: 10,
+            },
           },
           tooltip: {
+            backgroundColor: "rgba(45, 122, 104, 0.9)",
+            titleColor: "#fff",
+            bodyColor: "#fff",
+            borderColor: primaryGreen,
+            borderWidth: 1,
+            padding: 12,
+            titleFont: { size: 13, weight: "bold" },
             callbacks: {
               label: (ctx) => ` ${ctx.label}: ${ctx.raw}%`,
             },
@@ -87,6 +127,7 @@ function initCharts() {
     });
   }
 
+  // Trend Line Chart
   const trendCanvas = document.getElementById("trendChart");
   if (trendCanvas) {
     new Chart(trendCanvas, {
@@ -95,22 +136,36 @@ function initCharts() {
         labels: ["08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00"],
         datasets: [
           {
-            label: "Overall confidence",
+            label: "Confidence Score",
             data: [84, 89, 86, 91, 88, 82, 87],
-            borderColor: "#0c8f84",
-            backgroundColor: "rgba(12, 143, 132, 0.14)",
+            borderColor: primaryGreen,
+            backgroundColor: "rgba(45, 122, 104, 0.12)",
             fill: true,
-            tension: 0.35,
-            pointRadius: 3,
-            pointHoverRadius: 5,
+            tension: 0.4,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            pointBackgroundColor: primaryGreen,
+            pointBorderColor: "#fff",
+            pointBorderWidth: 2,
+            borderWidth: 3,
+            shadowColor: "rgba(45, 122, 104, 0.15)",
           },
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: true,
         scales: {
           x: {
-            ticks: { color: textColor, font: { family: "Space Mono", size: 10 } },
-            grid: { color: gridColor },
+            ticks: { 
+              color: textColor, 
+              font: { family: "Space Mono", size: 10, weight: "600" },
+              padding: 8,
+            },
+            grid: { 
+              color: gridColor,
+              drawBorder: false,
+            },
           },
           y: {
             suggestedMin: 60,
@@ -118,14 +173,32 @@ function initCharts() {
             ticks: {
               callback: (v) => `${v}%`,
               color: textColor,
-              font: { family: "Space Mono", size: 10 },
+              font: { family: "Space Mono", size: 10, weight: "600" },
+              padding: 8,
             },
-            grid: { color: gridColor },
+            grid: { 
+              color: gridColor,
+              drawBorder: false,
+            },
           },
         },
         plugins: {
           legend: {
-            labels: { color: textColor, font: { family: "Sora", size: 12 } },
+            labels: { 
+              color: textColor, 
+              font: { family: "Sora", size: 12, weight: "600" },
+              padding: 15,
+              usePointStyle: true,
+            },
+          },
+          tooltip: {
+            backgroundColor: "rgba(45, 122, 104, 0.9)",
+            titleColor: "#fff",
+            bodyColor: "#fff",
+            borderColor: primaryGreen,
+            borderWidth: 1,
+            padding: 12,
+            titleFont: { size: 13, weight: "bold" },
           },
         },
       },
@@ -133,6 +206,10 @@ function initCharts() {
   }
 }
 
+/**
+ * Initialize smooth anchor scrolling
+ * Allows smooth navigation between sections
+ */
 function initSmoothAnchors() {
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
@@ -141,11 +218,26 @@ function initSmoothAnchors() {
       if (!target) return;
 
       e.preventDefault();
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
+      target.scrollIntoView({ 
+        behavior: "smooth", 
+        block: "start" 
+      });
+
+      // Add highlight effect
+      const originalBg = target.style.backgroundColor;
+      target.style.backgroundColor = "rgba(212, 241, 235, 0.3)";
+      setTimeout(() => {
+        target.style.backgroundColor = originalBg;
+        target.style.transition = "background-color 400ms ease";
+      }, 50);
     });
   });
 }
 
+/**
+ * Initialize OLED screen simulations
+ * Creates animated visualizations of device displays
+ */
 function initOledSimulations() {
   // Heartbeat animation
   const hbCanvas = document.getElementById("heartbeat");
@@ -153,31 +245,36 @@ function initOledSimulations() {
     const ctx = hbCanvas.getContext("2d");
     const heartbeat = [0, 0, 0, 0, -2, -4, -3, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let phase = 0;
+    
     setInterval(() => {
       ctx.clearRect(0, 0, hbCanvas.width, hbCanvas.height);
       ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.2;
       ctx.beginPath();
+      
       for (let i = 0; i < 120; i++) {
         const idx = (i / 4 + phase) % 16;
         const y = 8 + heartbeat[Math.floor(idx)] * 0.8;
         i === 0 ? ctx.moveTo(i, y) : ctx.lineTo(i, y);
       }
+      
       ctx.stroke();
       phase = (phase + 1) % 16;
     }, 50);
   }
 
-  // Sine wave animation
+  // Sine wave animation (dual frequency)
   const sineCanvas = document.getElementById("sine-wave");
   if (sineCanvas) {
     const ctx = sineCanvas.getContext("2d");
     let offset = 0;
+    
     setInterval(() => {
       ctx.clearRect(0, 0, sineCanvas.width, sineCanvas.height);
       ctx.strokeStyle = "#fff";
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.2;
       ctx.beginPath();
+      
       for (let x = 0; x < 120; x++) {
         const angle1 = (x + offset) * 0.12;
         const angle2 = (x + offset) * 0.07 + 1.2;
@@ -186,16 +283,18 @@ function initOledSimulations() {
         const y = (y1 + y2) / 2;
         x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
+      
       ctx.stroke();
       offset = (offset + 0.5) % 120;
     }, 50);
   }
 
-  // Calibration progress
+  // Calibration progress bar
   let progress = 0;
   setInterval(() => {
     const bar = document.getElementById("progress-bar");
     const text = document.getElementById("progress-text");
+    
     if (bar && text) {
       progress = (progress + 1) % 100;
       bar.style.width = progress + "%";
@@ -203,36 +302,69 @@ function initOledSimulations() {
     }
   }, 80);
 
-  // Animate dots
+  // Animate dots for status text
   const dots = ["", ".", "..", "...", "..", "."];
   let dotIdx = 0;
+  
   setInterval(() => {
-    document.getElementById("dots-warmup").textContent = dots[dotIdx % dots.length];
-    document.getElementById("dots-calib").textContent = dots[dotIdx % dots.length];
-    document.getElementById("dots-rolling").textContent = dots[dotIdx % dots.length];
+    const warmupDots = document.getElementById("dots-warmup");
+    const calibDots = document.getElementById("dots-calib");
+    const rollingDots = document.getElementById("dots-rolling");
+    
+    if (warmupDots) warmupDots.textContent = dots[dotIdx % dots.length];
+    if (calibDots) calibDots.textContent = dots[dotIdx % dots.length];
+    if (rollingDots) rollingDots.textContent = dots[dotIdx % dots.length];
+    
     dotIdx += 1;
   }, 350);
 
-  // Feature page rotation
+  // Feature readout page rotation
   const features = [
     { label: "RMS", val: "245.8", label2: "PEAK Hz", val2: "1247" },
     { label: "KURT", val: "3.24", label2: "CREST", val2: "4.82" },
     { label: "CENTROID", val: "847", label2: "ZCR", val2: "0.168" },
   ];
+  
   let featureIdx = 0;
+  
   setInterval(() => {
     const feat = features[featureIdx % features.length];
-    document.getElementById("page-num").textContent = (featureIdx % features.length) + 1;
-    document.getElementById("rms-val").textContent = feat.val;
-    document.getElementById("hz-val").textContent = feat.val2;
+    const pageNum = document.getElementById("page-num");
+    const rmsVal = document.getElementById("rms-val");
+    const hzVal = document.getElementById("hz-val");
+    
+    if (pageNum) pageNum.textContent = (featureIdx % features.length) + 1;
+    if (rmsVal) rmsVal.textContent = feat.val;
+    if (hzVal) hzVal.textContent = feat.val2;
+    
     featureIdx += 1;
   }, 2000);
 }
 
+/**
+ * Initialize all effects on DOM ready
+ */
 window.addEventListener("DOMContentLoaded", () => {
-  initHeroStatusAnimation();
-  initRevealAnimations();
-  initCharts();
-  initSmoothAnchors();
-  initOledSimulations();
+  // Small delay to ensure smooth initial render
+  requestAnimationFrame(() => {
+    initHeroStatusAnimation();
+    initRevealAnimations();
+    initCharts();
+    initSmoothAnchors();
+    initOledSimulations();
+  });
+});
+
+/**
+ * Add scroll effect to topbar
+ */
+window.addEventListener("scroll", () => {
+  const topbar = document.querySelector(".topbar");
+  if (!topbar) return;
+  
+  if (window.scrollY > 50) {
+    topbar.style.boxShadow = "var(--shadow-mid)";
+  } else {
+    topbar.style.boxShadow = "var(--shadow-soft)";
+  }
 });
