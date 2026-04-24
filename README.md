@@ -75,7 +75,7 @@ The machine is powered off or no meaningful mechanical activity is detected. The
 **OLED Display — Ambient State:**
 
 ```text
-[ Insert Ambient OLED Photo Here ]
+<img width="8160" height="6144" alt="ambient" src="https://github.com/user-attachments/assets/d68deef5-5e66-42ca-8124-f631878aae99" />
 ```
 
 > Ambient mode: no meaningful machine activity detected, monitoring remains active.
@@ -95,7 +95,7 @@ The machine is running normally. Signal features are stable and within expected 
 **OLED Display — Healthy State:**
 
 ```text
-[ Insert Healthy OLED Photo Here ]
+<img width="8160" height="6144" alt="healthy" src="https://github.com/user-attachments/assets/212d8949-cd19-4941-b024-840c9526bb3e" />
 ```
 
 > Healthy mode: machine behavior is stable and operating as expected.
@@ -115,7 +115,8 @@ An anomaly has been detected. The signal shows characteristics that deviate from
 **OLED Display — Fault State:**
 
 ```text
-[ Insert Fault OLED Photo Here ]
+<img width="8160" height="6144" alt="fault" src="https://github.com/user-attachments/assets/77171125-1653-4c05-b697-f2d4a4915405" />
+
 ```
 
 > Fault mode: anomaly detected — early warning issued, plan maintenance action.
