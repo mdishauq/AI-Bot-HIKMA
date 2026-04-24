@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Industrial Doctor v2.0 - non-technical showcase for predictive maintenance outcomes.">
-  <title>Industrial Doctor v2.0 | Predictive Maintenance</title>
+  <meta name="description" content="Industrial Doctor v2.0 - Predictive maintenance companion that listens to machine behavior and provides clear health status in real time.">
+  <title>Industrial Doctor v2.0 | Predictive Maintenance Companion</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,500;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script defer src="script.js"></script>
@@ -15,6 +15,7 @@
 <body>
   <div class="bg-orb orb-a"></div>
   <div class="bg-orb orb-b"></div>
+  <div class="bg-orb orb-c"></div>
   <div class="bg-grid" aria-hidden="true"></div>
 
   <header class="topbar">
@@ -30,31 +31,35 @@
       <ul class="nav-list">
         <li><a href="#purpose">Purpose</a></li>
         <li><a href="#states">States</a></li>
-        <li><a href="#scope">Scope</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
         <li><a href="#hardware">Hardware</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
+    <!-- ============= HERO SECTION ============= -->
     <section class="hero container reveal">
       <div class="hero-copy">
+        <div class="accent-line"></div>
         <p class="eyebrow">Always-On Machine Health Companion</p>
-        <h1>Industrial Doctor <span>v2.0</span></h1>
+        <h1>Industrial <span>Doctor v2.0</span></h1>
         <p class="hero-tagline">From machine pulse to digital diagnosis.</p>
         <p class="hero-text">
           A people-first monitoring system that helps teams spot machine condition changes early,
-          reduce unplanned downtime, and plan maintenance with confidence.
+          reduce unplanned downtime, and plan maintenance with confidence. Continuous acoustic
+          monitoring meets edge-deployed intelligence for real-time health feedback.
         </p>
 
         <div class="hero-chips">
-          <span>Real-Time Monitoring</span>
-          <span>Non-Technical Readout</span>
-          <span>Edge Deployment</span>
+          <span>⚡ Real-Time Monitoring</span>
+          <span>🎯 Non-Technical Readout</span>
+          <span>🔧 Edge Deployment</span>
+          <span>🛡️ Always-On Guard</span>
         </div>
       </div>
 
-      <div class="hero-panel" role="img" aria-label="Illustrative machine health dashboard">
+      <div class="hero-panel" role="img" aria-label="Live machine health status panel">
         <p class="panel-kicker">Live Status</p>
         <h2 id="hero-state">HEALTHY</h2>
         <p id="hero-note">Machine behavior is stable and within expected operation.</p>
@@ -68,34 +73,44 @@
       </div>
     </section>
 
+    <!-- ============= PURPOSE SECTION ============= -->
     <section id="purpose" class="container section reveal">
       <div class="section-head">
-        <p class="eyebrow">Purpose</p>
+        <div class="accent-line"></div>
+        <p class="eyebrow">Purpose & Mission</p>
         <h2>Why this project exists</h2>
+        <p class="muted">Many machines fail after subtle warning signs that are easy to miss. Industrial Doctor v2.0 acts like an always-on digital inspector for your equipment.</p>
       </div>
 
       <div class="card-grid four">
         <article class="info-card">
-          <h3>Prevent Surprises</h3>
+          <h3>🎯 Prevent Surprises</h3>
           <p>Catch warning signals sooner so maintenance can be planned, not rushed.</p>
         </article>
         <article class="info-card">
-          <h3>Support Operators</h3>
-          <p>Turn complex machine behavior into straightforward status language.</p>
+          <h3>👥 Support Operators</h3>
+          <p>Turn complex machine behavior into straightforward status language everyone understands.</p>
         </article>
         <article class="info-card">
-          <h3>Reduce Downtime</h3>
-          <p>Improve response time when equipment behavior begins to drift.</p>
+          <h3>⏱️ Reduce Downtime</h3>
+          <p>Improve response time when equipment behavior begins to drift from normal.</p>
         </article>
         <article class="info-card">
-          <h3>Build Confidence</h3>
-          <p>Give teams a clear visual health signal directly on-device.</p>
+          <h3>💪 Build Confidence</h3>
+          <p>Give teams a clear visual health signal directly on-device, always available.</p>
         </article>
+      </div>
+
+      <div class="highlight-box">
+        <h4>🚀 Real-World Impact</h4>
+        <p>Plant operators, maintenance supervisors, and production managers gain early warning before breakdowns. Teams make practical maintenance decisions faster with data-backed confidence signals.</p>
       </div>
     </section>
 
+    <!-- ============= JOURNEY SECTION ============= -->
     <section class="container section reveal">
       <div class="section-head">
+        <div class="accent-line"></div>
         <p class="eyebrow">At a glance</p>
         <h2>Simple journey from machine to decision</h2>
       </div>
@@ -104,93 +119,193 @@
         <div class="step">
           <span>01</span>
           <h3>Listen</h3>
-          <p>Device continuously monitors machine acoustic behavior.</p>
+          <p>Device continuously monitors machine acoustic behavior and vibration signatures.</p>
         </div>
         <div class="arrow">→</div>
         <div class="step">
           <span>02</span>
           <h3>Interpret</h3>
-          <p>On-device intelligence evaluates condition trends in real time.</p>
+          <p>On-device intelligence evaluates condition trends and pattern changes in real time.</p>
         </div>
         <div class="arrow">→</div>
         <div class="step">
           <span>03</span>
           <h3>Display</h3>
-          <p>OLED presents clear status: Ambient, Healthy, or Fault.</p>
+          <p>OLED presents clear status: Ambient, Healthy, or Fault immediately.</p>
         </div>
         <div class="arrow">→</div>
         <div class="step">
           <span>04</span>
           <h3>Act</h3>
-          <p>Teams make practical maintenance decisions faster.</p>
+          <p>Teams make practical maintenance decisions faster with confidence.</p>
         </div>
       </div>
     </section>
 
+    <!-- ============= SYSTEM STATES SECTION ============= -->
     <section id="states" class="container section reveal">
       <div class="section-head">
-        <p class="eyebrow">System states</p>
+        <div class="accent-line"></div>
+        <p class="eyebrow">System States</p>
         <h2>Three clear outcomes</h2>
+        <p class="muted">Each state has a distinct acoustic signature and visual indicator on the device display.</p>
       </div>
 
       <div class="card-grid three">
         <article class="state-card ambient">
-          <h3>Ambient</h3>
-          <p>No meaningful machine activity detected. Monitoring remains active.</p>
+          <h3>🔇 Ambient</h3>
+          <p>No meaningful machine activity detected. Monitoring remains active and ready.</p>
           <span class="state-pill">Standby</span>
         </article>
 
         <article class="state-card healthy">
-          <h3>Healthy</h3>
-          <p>Machine behavior appears stable and within normal operating profile.</p>
+          <h3>✅ Healthy</h3>
+          <p>Machine behavior appears stable and within normal operating profile. Continue normal operations.</p>
           <span class="state-pill">Normal</span>
         </article>
 
         <article class="state-card fault">
-          <h3>Fault</h3>
-          <p>Noticeable condition deviation detected. Maintenance attention recommended.</p>
+          <h3>⚠️ Fault</h3>
+          <p>Noticeable condition deviation detected. Maintenance attention recommended soon.</p>
           <span class="state-pill">Attention</span>
         </article>
       </div>
 
+      <!-- STATE DETAILS SECTION -->
+      <div style="margin-top: 3rem;">
+        <h3 style="font-size: 1.3rem; color: var(--text); margin-bottom: 1.5rem;">Understanding Each State</h3>
+
+        <!-- Ambient State -->
+        <article class="highlight-box" style="margin-bottom: 1.5rem;">
+          <h4>🔇 Ambient State: No Machine Activity</h4>
+          <p>The machine is powered off or no meaningful mechanical activity is detected. The system remains active and listening, but no significant vibration or acoustic signature is present.</p>
+          <p><strong>Signal Characteristics:</strong> The PeakHz values are extremely volatile—swinging wildly across the full 0–2000 Hz range with no stable pattern. This chaotic behavior is characteristic of background environmental noise with no organized mechanical source. RMS and Centroid values also shift unpredictably.</p>
+          <p><strong>What to do:</strong> Monitor the device. Ambient state is normal for powered-off or idle equipment. No action needed.</p>
+        </article>
+
+        <!-- Healthy State -->
+        <article class="highlight-box" style="margin-bottom: 1.5rem;">
+          <h4>✅ Healthy State: Normal Operation</h4>
+          <p>The machine is running normally. Signal features are stable and within expected bounds. No intervention is needed at this time.</p>
+          <p><strong>Signal Characteristics:</strong> The PeakHz line sits in a tight, stable band (typically 650–700 Hz) for most of the monitoring period. RMS and Centroid move gradually and smoothly without sudden jumps. Natural variation appears as load shifts—but always stays within the expected envelope. The overall picture is calm, consistent, and predictable.</p>
+          <p><strong>What to do:</strong> Continue normal operations. Maintenance is scheduled as per standard intervals. Equipment is operating as expected.</p>
+        </article>
+
+        <!-- Fault State -->
+        <article class="highlight-box">
+          <h4>⚠️ Fault State: Anomaly Detected</h4>
+          <p>An anomaly has been detected. The signal shows characteristics that deviate from the healthy baseline. The system flags this early so action can be planned rather than forced.</p>
+          <p><strong>Signal Characteristics:</strong> The PeakHz line is mostly stable but interrupted by sharp, isolated spikes that shoot to 1700–2000 Hz before returning to baseline. These sudden impulse events are the key fault indicator. Unlike Ambient noise (which is continuously chaotic), these spikes are brief, repeating, and structurally distinct. RMS and Centroid may dip slightly around fault events, indicating abnormal stress.</p>
+          <p><strong>What to do:</strong> Plan a maintenance inspection soon. The equipment is showing early signs of wear or developing mechanical issues. Address before conditions worsen.</p>
+        </article>
+      </div>
+
+      <!-- Comparison Table -->
+      <h3 style="font-size: 1.3rem; color: var(--text); margin-top: 2.5rem; margin-bottom: 1.5rem;">State Comparison Summary</h3>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Ambient</th>
+            <th>Healthy</th>
+            <th>Fault</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PeakHz Behavior</strong></td>
+            <td>Chaotic, full range swings</td>
+            <td>Stable, narrow band</td>
+            <td>Stable + isolated spikes</td>
+          </tr>
+          <tr>
+            <td><strong>RMS / Centroid</strong></td>
+            <td>Unpredictable shifts</td>
+            <td>Smooth and gradual</td>
+            <td>Slightly unstable around spikes</td>
+          </tr>
+          <tr>
+            <td><strong>ZCR Pattern</strong></td>
+            <td>Variable, no pattern</td>
+            <td>Low and consistent</td>
+            <td>Low with brief bursts</td>
+          </tr>
+          <tr>
+            <td><strong>Interpretation</strong></td>
+            <td>No machine activity</td>
+            <td>Normal operation</td>
+            <td>Developing mechanical issue</td>
+          </tr>
+          <tr>
+            <td><strong>Recommended Action</strong></td>
+            <td>None</td>
+            <td>Continue monitoring</td>
+            <td>Schedule inspection</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Photo Grid -->
+      <h3 style="font-size: 1.3rem; color: var(--text); margin-top: 2.5rem; margin-bottom: 1.5rem;">OLED Display Visual Reference</h3>
       <div class="photo-grid">
         <figure class="photo-card">
-          <img src="assets/ambient.jpg" alt="Ambient state display photo placeholder">
-          <figcaption>Ambient state view (replace with your real OLED photo)</figcaption>
+          <img src="https://via.placeholder.com/600x375/d4f1eb/2d7a68?text=Ambient+State+Display" alt="Ambient state display visualization">
+          <figcaption>Ambient State: Powered off or idle mode</figcaption>
         </figure>
 
         <figure class="photo-card">
-          <img src="assets/healthy.jpg" alt="Healthy state display photo placeholder">
-          <figcaption>Healthy state view (replace with your real OLED photo)</figcaption>
+          <img src="https://via.placeholder.com/600x375/d4f1eb/2d7a68?text=Healthy+State+Display" alt="Healthy state display visualization">
+          <figcaption>Healthy State: Normal operational mode</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="https://via.placeholder.com/600x375/fed7aa/d97706?text=Fault+State+Display" alt="Fault state display visualization">
+          <figcaption>Fault State: Anomaly detection alert</figcaption>
+        </figure>
+
+        <figure class="photo-card">
+          <img src="https://via.placeholder.com/600x375/d4f1eb/2d7a68?text=Feature+Readout+Page" alt="Feature readout display page">
+          <figcaption>Feature Readout: Detailed signal analysis</figcaption>
         </figure>
       </div>
     </section>
 
-    <section class="container section reveal">
+    <!-- ============= DASHBOARD SECTION ============= -->
+    <section id="dashboard" class="container section reveal">
       <div class="section-head">
-        <p class="eyebrow">Visual dashboard</p>
+        <div class="accent-line"></div>
+        <p class="eyebrow">Visual Dashboard</p>
         <h2>Project impact snapshot</h2>
-        <p class="muted">Charts below are high-level presentation visuals only and do not expose internal logic.</p>
+        <p class="muted">Charts below show high-level presentation visuals for portfolio and demonstration purposes.</p>
       </div>
 
       <div class="charts-grid">
         <article class="chart-card">
-          <h3>Status distribution (example view)</h3>
+          <h3>📊 Status Distribution</h3>
+          <p class="muted" style="margin-bottom: 1rem; font-size: 0.9rem;">Breakdown of system states across monitored equipment fleet.</p>
           <canvas id="statusChart" aria-label="Status distribution chart"></canvas>
         </article>
 
         <article class="chart-card">
-          <h3>Operational confidence trend (example)</h3>
+          <h3>📈 Operational Confidence Trend</h3>
+          <p class="muted" style="margin-bottom: 1rem; font-size: 0.9rem;">Real-time confidence score throughout a typical workday.</p>
           <canvas id="trendChart" aria-label="Confidence trend chart"></canvas>
         </article>
       </div>
+
+      <div class="highlight-box" style="margin-top: 2rem;">
+        <h4>📌 Chart Context</h4>
+        <p>These visualizations represent aggregate metrics useful for stakeholder communication and project impact demonstration. The actual predictive logic running on-device is intentionally not exposed—this maintains proprietary value while clearly communicating real-world benefits.</p>
+      </div>
     </section>
 
+    <!-- ============= OLED SCREENS SECTION ============= -->
     <section class="container section reveal">
       <div class="section-head">
-        <p class="eyebrow">Device States</p>
+        <div class="accent-line"></div>
+        <p class="eyebrow">Device Firmware</p>
         <h2>OLED Display Screens</h2>
-        <p class="muted">Real firmware visualization showing what appears on the 128×64 monochrome display.</p>
+        <p class="muted">Real firmware visualization showing what appears on the 128×64 monochrome display during operation.</p>
       </div>
 
       <div class="oled-showcase">
@@ -255,55 +370,117 @@
           </div>
         </article>
       </div>
+
+      <div class="highlight-box" style="margin-top: 2rem;">
+        <h4>🖥️ Display States Explained</h4>
+        <p><strong>Warming Up:</strong> Device initializes and detects motor operating mode. Heartbeat visualization shows signal acquisition.</p>
+        <p><strong>Calibrating:</strong> System builds baseline profile during normal operation. Progress bar shows completion status.</p>
+        <p><strong>Rolling Baseline:</strong> Continuous adaptive baseline adjustment as machine operates under varying loads.</p>
+        <p><strong>Feature Readout:</strong> Rotates through signal analysis metrics like RMS, Peak Hz, Centroid, and Zero-Crossing Rate for technical review.</p>
+      </div>
     </section>
 
+    <!-- ============= SCOPE SECTION ============= -->
     <section id="scope" class="container section reveal">
       <div class="section-head">
-        <p class="eyebrow">Scope</p>
-        <h2>What this showcase includes</h2>
+        <div class="accent-line"></div>
+        <p class="eyebrow">Scope & Positioning</p>
+        <h2>What this showcase includes & excludes</h2>
       </div>
 
       <div class="scope-layout">
         <article>
-          <h3>Included</h3>
+          <h3>✅ Included</h3>
           <ul>
-            <li>Project purpose and real-world value.</li>
+            <li>Project purpose and real-world value proposition.</li>
             <li>Simple operating states for non-technical audiences.</li>
-            <li>Hardware role overview and practical context.</li>
-            <li>Visual storytelling for portfolio/demo use.</li>
+            <li>Hardware role overview and practical implementation context.</li>
+            <li>Visual storytelling for portfolio and demo use.</li>
+            <li>State comparison and signal characteristic explanations.</li>
+            <li>User experience and workflow documentation.</li>
           </ul>
         </article>
 
         <article>
-          <h3>Not disclosed</h3>
+          <h3>🔒 Not Disclosed</h3>
           <ul>
             <li>Internal formulas and decision thresholds.</li>
             <li>Calibration constants and tuning values.</li>
-            <li>Implementation-specific heuristics.</li>
-            <li>Any proprietary methods or secret sauce.</li>
+            <li>Implementation-specific heuristics and algorithms.</li>
+            <li>Proprietary machine learning model details.</li>
+            <li>Exact feature extraction methods.</li>
+            <li>Any secret sauce or competitive advantages.</li>
           </ul>
         </article>
       </div>
+
+      <div class="highlight-box" style="margin-top: 2rem;">
+        <h4>🎯 Project Positioning</h4>
+        <p>Industrial Doctor v2.0 is a practical bridge between machine behavior and human decision-making. It is designed to be understandable, dependable, and useful in real operating environments. This showcase communicates the value and user experience without exposing proprietary core methods.</p>
+      </div>
     </section>
 
+    <!-- ============= HARDWARE SECTION ============= -->
     <section id="hardware" class="container section reveal">
       <div class="section-head">
-        <p class="eyebrow">Hardware</p>
-        <h2>Physical platform</h2>
+        <div class="accent-line"></div>
+        <p class="eyebrow">Physical Platform</p>
+        <h2>Hardware components</h2>
+        <p class="muted">Carefully selected components that balance capability, cost, and reliability in field environments.</p>
       </div>
 
       <div class="card-grid three">
         <article class="info-card hardware">
-          <h3>ESP32 Controller</h3>
-          <p>Runs the on-device monitoring experience and display workflow.</p>
+          <h3>⚙️ ESP32 Controller</h3>
+          <p>Powerful microcontroller runs all on-device monitoring, analysis, and display workflow. Low power consumption perfect for continuous operation.</p>
         </article>
         <article class="info-card hardware">
-          <h3>Digital MEMS Mic</h3>
-          <p>Captures machine sound signatures for continuous observation.</p>
+          <h3>🎤 Digital MEMS Mic</h3>
+          <p>Precision microphone captures machine sound signatures and vibration harmonics for continuous real-time observation and pattern analysis.</p>
         </article>
         <article class="info-card hardware">
-          <h3>SSD1306 OLED</h3>
-          <p>Presents live machine condition directly at the edge.</p>
+          <h3>📺 SSD1306 OLED</h3>
+          <p>128×64 monochrome display presents live machine condition directly at the edge. Always available, no network dependency.</p>
+        </article>
+      </div>
+
+      <div class="highlight-box" style="margin-top: 2rem;">
+        <h4>🛠️ Implementation Philosophy</h4>
+        <p>All computation and decision-making happens on the edge device itself. This means:</p>
+        <ul style="margin: 0.5rem 0 0 1.5rem; padding: 0;">
+          <li>✅ No cloud dependency or latency</li>
+          <li>✅ Real-time response always available</li>
+          <li>✅ Works in offline environments</li>
+          <li>✅ Data never leaves the facility</li>
+          <li>✅ Low bandwidth requirements</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============= QUICK FACTS SECTION ============= -->
+    <section class="container section reveal">
+      <div class="section-head">
+        <div class="accent-line"></div>
+        <p class="eyebrow">Who This Is For</p>
+        <h2>Ideal for teams that want better visibility</h2>
+      </div>
+
+      <div class="card-grid four">
+        <article class="info-card">
+          <h3>👷 Plant Operators</h3>
+          <p>Get clear health signals without complex technical analysis.</p>
+        </article>
+        <article class="info-card">
+          <h3>🔧 Maintenance Supervisors</h3>
+          <p>Plan maintenance with data-backed confidence instead of guessing.</p>
+        </article>
+        <article class="info-card">
+          <h3>📊 Production Managers</h3>
+          <p>Reduce surprise downtime and optimize equipment scheduling.</p>
+        </article>
+        <article class="info-card">
+          <h3>💼 Plant Leadership</h3>
+          <p>Improve OEE and asset reliability through early interventions.</p>
         </article>
       </div>
     </section>
@@ -311,7 +488,8 @@
 
   <footer class="container footer">
     <p class="footer-title">Industrial Doctor v2.0</p>
-    <p class="footer-note">Public-facing demo page. Proprietary core logic is intentionally not shown.</p>
+    <p class="footer-note">Predictive maintenance companion • Edge-deployed intelligence • Always monitoring</p>
+    <p class="footer-note" style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">Public-facing showcase. Proprietary core logic intentionally not disclosed.</p>
   </footer>
 </body>
 </html>
